@@ -43,14 +43,20 @@ export type project_config = {
 
 export default function ProjectEditor() {
     const [projectConfig, setProjectConfig] = useState<project_config>({
-        apiname: "",
+        apiname: "teste",
         version: "string",
         techno: "string",
         database: {
             dbname: "string",
             sgbd: "string"
         },
-        models: [],
+        models: [
+            {
+                name:"model2",
+                attributs: [],
+                operations: []
+            }
+        ],
         user: {
             name: "string",
             attributs: "string",
@@ -64,8 +70,8 @@ export default function ProjectEditor() {
             <LeftSidePanel></LeftSidePanel>
 
             <main className="w-full">
-                <NavBar setProject={setProjectConfig}></NavBar>
-                <EditorPanel></EditorPanel>
+                <NavBar setProject={setProjectConfig} project={projectConfig}></NavBar>
+                <EditorPanel project={projectConfig} setProject={setProjectConfig}></EditorPanel>
             </main>
 
         </SidebarProvider>

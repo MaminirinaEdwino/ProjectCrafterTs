@@ -1,4 +1,4 @@
-import {  Sidebar, SidebarContent } from "./components/ui/sidebar";
+import {  Sidebar, SidebarContent, SidebarFooter, SidebarHeader } from "./components/ui/sidebar";
 
 export default function LeftSidePanel(){
     return <Sidebar
@@ -7,6 +7,12 @@ export default function LeftSidePanel(){
         collapsible="offcanvas"
     >
         <SidebarContent>
+            <SidebarHeader>
+                Header
+            </SidebarHeader>
+            <SidebarFooter>
+                Footer
+            </SidebarFooter>
 
         </SidebarContent>
     </Sidebar>

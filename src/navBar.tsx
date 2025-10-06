@@ -9,10 +9,13 @@ import { Input } from "./components/ui/input";
 import { useState } from "react";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "./components/ui/select";
 import { Button } from "./components/ui/button";
+import { project_config } from "./components/projectEditor";
 interface navprops {
+    project: project_config,
     setProject: Function
 }
 export default function NavBar({
+    project,
     setProject
 }: navprops) {
     const [newProjectOpen, setNewProjectOpen] = useState(false)
@@ -25,8 +28,10 @@ export default function NavBar({
         let dbname = form.get("dbname")
         let sgbd = form.get("sgbd")
         console.log(projectname, version, techno, dbname, sgbd)
+        setProject({...project, apiname: projectname, version: version, techno: techno, database: {dbname: dbname, sgbd: sgbd}})
+        console.log(project)
     }
-    return <nav className="mt-2">
+    return <nav className="m-2">
         <Menubar>
             <SidebarTrigger></SidebarTrigger>
             <MenubarMenu>
@@ -73,12 +78,6 @@ export default function NavBar({
             <ModeToggle></ModeToggle>
         </Menubar>
         <Dialog open={newProjectOpen} onOpenChange={setNewProjectOpen}>
-
-
-            <DialogTrigger>
-
-            </DialogTrigger>
-
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle>
